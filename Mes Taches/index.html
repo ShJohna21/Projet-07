@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mon Gestionnaire de Tâches</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icône pour l'application mobile -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    <!-- Meta tags pour application mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4a6fa5">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> Mes Tâches</h1>
+            <p class="subtitle">Gérez vos tâches quotidiennes</p>
+        </header>
+
+        <div class="add-task">
+            <input type="text" id="taskInput" placeholder="Nouvelle tâche..." autocomplete="off">
+            <button id="addButton">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="quick-actions">
+            <button id="clearCompleted" class="action-btn">
+                <i class="fas fa-check-double"></i> Nettoyer
+            </button>
+            <button id="addExample" class="action-btn">
+                <i class="fas fa-magic"></i> Exemple
+            </button>
+        </div>
+
+        <div class="task-filters">
+            <button class="filter-btn active" data-filter="all">Toutes</button>
+            <button class="filter-btn" data-filter="active">Actives</button>
+            <button class="filter-btn" data-filter="completed">Terminées</button>
+        </div>
+
+        <div class="task-stats">
+            <span id="taskCount">0 tâche(s)</span>
+            <span class="hint">Tapotez pour compléter</span>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>Aucune tâche</h3>
+            <p>Ajoutez votre première tâche ci-dessus</p>
+        </div>
+
+        <ul id="taskList">
+            <!-- Les tâches seront ajoutées ici -->
+        </ul>
+
+        <div class="share-section">
+            <h3><i class="fas fa-share-alt"></i> Partager</h3>
+            <div class="share-buttons">
+                <button id="shareApp" class="share-btn">
+                    <i class="fas fa-share"></i> Partager l'App
+                </button>
+                <button id="exportTasks" class="share-btn">
+                    <i class="fas fa-download"></i> Exporter
+                </button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <details>
+                <summary><i class="fas fa-info-circle"></i> Comment utiliser</summary>
+                <ul>
+                    <li>📝 Tapez une tâche et appuyez sur "+"</li>
+                    <li>✅ Tapotez une tâche pour la terminer</li>
+                    <li>🗑️ Swipez vers la gauche pour supprimer</li>
+                    <li>📱 Ajoutez à l'écran d'accueil pour une app</li>
+                    <li>💾 Vos données sont sauvegardées localement</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="app-install" id="installPrompt">
+            <p><i class="fas fa-mobile-alt"></i> Ajouter à l'écran d'accueil ?</p>
+            <button id="installBtn">Installer</button>
+            <button id="dismissInstall">Plus tard</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Mon App de Tâches • <button id="viewSource">Voir le code source</button></p>
+    </footer>
+
+    <!-- Modales -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-download"></i> Exporter les tâches</h3>
+            <textarea id="exportData" readonly></textarea>
+            <div class="modal-buttons">
+                <button id="copyExport" class="modal-btn">Copier</button>
+                <button id="closeExport" class="modal-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="importModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-upload"></i> Importer des tâches</h3>
+            <textarea id="importData" placeholder="Collez les données d'export ici..."></textarea>
+            <div class="modal-buttons">
+                <button id="confirmImport" class="modal-btn">Importer</button>
+                <button id="closeImport" class="modal-btn">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer>Sh Johna-Madagascar</footer>
+</body>
+</html>
